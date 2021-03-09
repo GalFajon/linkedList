@@ -1,9 +1,5 @@
 #include "LinkedList.h"
-#include<iostream>
-#include<QString>
-#include<QDate>
-#include<fstream>
-#include<QMessageBox>
+
 template<class T>
 LinkedList<T>::LinkedList(){
     this->start = 0;
@@ -52,7 +48,7 @@ void LinkedList<T>::pop(T element_to_pop) {
     };
 }
 
-/*template<class T> //POGLEJ ČE JE BOLJ ČASOVNO UČINKOVITO, REINTEGRIRAJ IN ZBRIŠI NA VREDNOST VEZANO VERZIJO
+/*template<class T>
 void LinkedList<T>::pop(unsigned short index) {
     element* tmp = start;
     for (int i=0;i<index;i++){
@@ -114,74 +110,4 @@ int LinkedList<T>::length(){
 }
 
 
-template <> void LinkedList<std::string>::save(std::string pot) {
-    std::fstream save;
-    try {
-       save.open(pot,std::ios::out);
-    } catch (std::ios::failure e) {
-        QMessageBox warning;
-        warning.setText("Napaka pri shranjevanju." + QString::fromStdString(e.what()));
-        warning.exec();
-        return;
-    }
-
-    int listlength = this->length();
-    for (int i=0;i<listlength;i++) {
-        save << this->find(i) << std::endl;
-    }
-    save.close();
-};
-
-template <> void LinkedList<std::string>::load(std::string pot) {
-    std::fstream load;
-    try {
-       load.open(pot,std::ios::in);
-    } catch (std::ios::failure e) {
-        QMessageBox warning;
-        warning.setText("Napaka pri shranjevanju." + QString::fromStdString(e.what()));
-        warning.exec();
-        return;
-    }
-    std::string temp;
-    while (std::getline(load,temp)) this->push(temp);
-    load.close();
-}
-
-template <> void LinkedList<QString>::save(std::string pot) {
-    std::fstream save;
-    try {
-       save.open(pot,std::ios::out);
-    } catch (std::ios::failure e) {
-        QMessageBox warning;
-        warning.setText("Napaka pri shranjevanju." + QString::fromStdString(e.what()));
-        warning.exec();
-        return;
-    }
-    int listlength = this->length();
-    for (int i=0;i<listlength;i++) {
-        save << this->find(i).toStdString() << std::endl;
-    }
-    save.close();
-};
-
-template <> void LinkedList<QString>::load(std::string pot) {
-    std::fstream load;
-    try {
-       load.open(pot,std::ios::in);
-    } catch (std::ios::failure e) {
-        QMessageBox warning;
-        warning.setText("Napaka pri shranjevanju." + QString::fromStdString(e.what()));
-        warning.exec();
-        return;
-    }
-    std::string temp;
-    while (std::getline(load,temp)) {this->push(QString::fromStdString(temp));
-    }
-    load.close();
-}
-
-
-template class LinkedList<int>;
-template class LinkedList<std::string>;
-template class LinkedList<QString>;
-template class LinkedList<QDate>;
+//template class LinkedList<int>; <- add class templates here
