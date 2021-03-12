@@ -48,6 +48,7 @@ void LinkedList<T>::pop(T element_to_pop) {
     };
 }
 
+//UNUSED, my project never required it.
 /*template<class T>
 void LinkedList<T>::pop(unsigned short index) {
     element* tmp = start;
