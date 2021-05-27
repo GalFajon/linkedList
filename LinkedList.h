@@ -13,7 +13,6 @@ element *next;
 element *prev;
 };
 
-//konec, začetek
 element *start=0;
 
 public:
